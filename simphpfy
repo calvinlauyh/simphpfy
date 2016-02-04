@@ -1,0 +1,57 @@
+<?php
+
+/* 
+ * Created by Hei
+ */
+$startTime = microtime(true);
+
+function _shutdown() {
+    global $startTime;
+    $endTime = microtime(true);
+    echo '    -> Elpased Time: ' . ($endTime - $startTime) . 's' . PHP_EOL;
+}
+register_shutdown_function('_shutdown');
+
+require('bin' . DIRECTORY_SEPARATOR . 'bootstrap.php');
+
+define('BIN_COMMAND', BIN . 'command');
+/*
+ * Check readability of the bin command file
+ */
+if (!file_exists(BIN_COMMAND)) {
+    throw new CLIException('Command list file does not exist');
+}
+if (!is_readable(BIN_COMMAND)) {
+    throw new CLIException('Command list is unreadable');
+}
+$file = fopen(BIN_COMMAND, 'r');
+$commandLine = fgets($file);
+$commandList = explode(';', $commandLine);
+if ($commandList[0] == '') {
+    array_shift($commandList);
+}
+if ($commandList[count($commandList)-1] == '') {
+    array_pop($commandList);
+}
+
+if (!isset($argv[1])) {
+    throw new CLIException('Command is not specified');
+}
+$command = explode(':', $argv[1]);
+if (count($command) == 1) {
+    $command = $file = $argv[1];
+} else {
+    $file = $command[0] . '_' . $command[1];
+    $command = $command[0];
+}
+$file .= '.php';
+if (!in_array($command, $commandList)) {
+    throw new CLIException("Unknown command `{$argv[1]}`");
+}
+array_shift($argv);
+$path = BIN . $file;
+if (!is_readable($path)) {
+    throw new CLIException("Command `{$path}` not found");
+}
+include BIN . $file;
+    

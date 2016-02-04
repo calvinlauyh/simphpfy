@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Edit</title>
+</head>
+<body>
+    <form data-method="PUT" data-helper="simphpfy" data-controller="Member" data-action="Edit" data-id="<% echo $this->params['id']; %>">
+        <h1>Member Login</h1>
+        <% if ($error) { %>
+        <h3 style="color: red;">Error: <% print_r($error); %></h3>
+        <% } %>
+        <label for="username">Username:</label><input id="username" type="text" data-helper="simphpfy" data-column="username" value="<%=$member['username']%>" />
+        <br />
+        <label for="password">Password:</label><input id="password" type="password" data-helper="simphpfy" data-column="password" />
+        <br />
+    </form>
+</body>
+</html>

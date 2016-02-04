@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Registration</title>
+</head>
+<body>
+    <form data-method="PUT" data-helper="simphpfy">
+        <h1>Member Registration</h1>
+        <% if ($this->Model->lastError) { %>
+        <h3 style="color: red;">Error: <% print_r($this->Model->lastError); %></h3>
+        <% } %>
+        <label for="username">Username:</label><input id="username" type="text" data-helper="simphpfy" data-column="username" />
+        <br />
+        <label for="password">Password:</label><input id="password" type="password" data-helper="simphpfy" data-column="password" />
+        <br />
+        <input type="submit" value="Register" />
+    </form>
+</body>
+</html>

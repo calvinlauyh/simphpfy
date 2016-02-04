@@ -1,0 +1,8 @@
+    <img src="/framework/Track/ShowImage" height="50px" />
+    Member operation:
+    <% if (isset($this->request->cookie['id'])) { %>
+    <a href="Edit">Edit</a> | <a href="Logout">Logout</a> | <a href="Destroy">Destroy</a>
+    <% } else { %>
+        <a href="Login">Login</a> | <a href="Create">Register</a>
+    <% } %>
+    <br /><br />

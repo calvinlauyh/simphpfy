@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member System</title>
+    <% render file="Index.js" controller="Member" static="TRUE" behaviour="url" %>
+</head>
+<body>
+    <% render file="header.html" controller="Member" dynamic="TRUE" behaviour="direct" %>
+    <table>
+        <thead>
+            <tr>
+                <td style="padding:0 5px;">id</td>
+                <td style="padding:0 5px;">username</td>
+                <td style="padding:0 5px;">Operation</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% foreach($members as $member) { %>
+                <tr>
+                    <td style="padding:0 5px;"><%=$member['id']%></td>
+                    <td style="padding:0 5px;"><%=$member['username']%></td>
+                    <td style="padding:0 5px;">
+                        <a href="Show/<%=$member['id']%>" target="_blank">Show</a>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>

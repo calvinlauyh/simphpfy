@@ -1,0 +1,37 @@
+<?php
+
+/* 
+ * Created by Hei
+ */
+
+function defaultController(){
+    echo 'This is defaultController';
+}
+
+Router::listen('GET', '/framework/', 'defaultController');
+
+Router::listen('GET', '/framework/redirect/:{[0-9a-zA-Z_]+\.jpg}', '/framework/Member/Index');
+
+Router::listen('GET', 'framework/view/$id:ID', function($request){
+    echo 'This is closure function<br />';
+    echo '$id is ' . $request->params['id'];
+});
+
+Router::listen('GET', '/framework/:Controller/:Action/$id:ID/*');
+
+Router::listen('GET', '/framework/:Controller/:Action/$id:ID/**');
+
+Router::listen('GET', '/framework/redirect/member', array(
+    'controller' => 'Member', 
+    'action' => 'Index'
+));
+
+Router::listen('GET', '/framework/:Controller/:Action/$id:ID/**/test');
+
+/*Router::listen(array('GET', 'POST'), '/:Controller/:Action/$id:{[0-9]+}/:{*}', array(
+        'controller' => '', 
+        'action' => ''
+    ), function(){}
+);*/
+
+Router::dispatch();

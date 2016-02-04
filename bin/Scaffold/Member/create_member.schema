@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<table operation="create" name="member" model="Member">
+    <column name="username" type="email" />
+    <column name="password" type="string" />
+    <column name="created_at" type="date" />
+</table>
