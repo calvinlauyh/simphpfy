@@ -1,5 +1,5 @@
 # SimPHPfy
-SimPHPfy is my individual project when studying CSCI4140 Open-Source Software Development. It is no longer maintained and serves only as an archive for future project. It supports routing with custom rules, HTML template system, access MySQL database using Object-orieted like syntax, and also support quickly creating a few demo-purpose systems using scaffold including a featureless simple Member system and a user tracking image.
+SimPHPfy is my individual project when studying CSCI4140 Open-Source Software Project Development. It is no longer maintained and serves only as an archive for future project. It supports routing with custom rules, HTML template system, access MySQL database using Object-orieted like syntax, and also support quickly creating a few demo-purpose systems using scaffold including a featureless simple Member system and a user tracking image.
   
 ## Demo Instructions
 * php simphpfy scaffold:generate Member
